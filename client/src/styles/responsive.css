@@ -1,0 +1,303 @@
+@media screen and (max-width: 1100px) {
+    header {
+        width: 90%;
+        padding: 0 20px;
+        background-color: #0847f400;
+    }
+    nav {
+        position: absolute;
+        position: fixed;
+        left: -300px;
+        top: 0;
+        z-index: 999;
+        width: 280px;
+        height: 100vh;
+        background: #1c1f27;
+        transition: 0.5s;
+        box-shadow: 2px 0 20px 0 rgba(0, 0, 0, 0.194);
+    }
+    #nav_check:checked ~ nav {
+        left: 0;
+    }
+    nav .logo {
+        display: block;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        margin-left: 30px;
+    }
+    nav ul li a{
+        color: #ffffff;
+        margin-bottom: 5px;
+        padding: 10px 15px;
+        border-radius: 5px;
+    }
+    nav ul {
+        display: block;
+        padding: 0 20px;
+        margin-top: 30px;
+    }
+    .hamburger {
+        display: block;
+        position: fixed;
+        right: 9vw;
+        z-index: 999;
+        background-color: #60879162;
+    }
+}
+
+
+@media screen and (max-width: 2911px){
+    .container-about {
+        padding: 8vw 18vw;
+    }
+    .content-about {
+        padding: 5vw 15%;
+    }
+    .content-about p {
+        margin-left: 10%;
+    }
+    .content-about .button-23 {
+        margin-left: 10%;
+    }
+}
+@media screen and (max-width: 2351px){
+    header {
+        width: 70%;
+    }
+    .container-about {
+        padding: 8vw 15vw;
+    }
+    .st {
+        font-size: 8rem;
+    }
+}
+@media screen and (max-width: 2150px) {
+    .st {
+        width: 100%;
+        font-size: 7rem;
+    }
+    .container-about {
+        padding: 8vw 10vw;
+    }
+    .content-about {
+        padding: 5vw 13%;
+    }
+    .content-about p {
+        margin-left: 0;
+    }
+    .content-about .button-23 {
+        margin-left: 0;
+    }
+}
+@media screen and (max-width: 1920px) {
+    .content-about p {
+        font-size: 16px;
+    }
+    .content-about h2 {
+        font-size: 4rem;
+    }
+    .text_head h1 {
+        font-size: 10rem;
+    }
+    .text_head h2 {
+        font-size: 5rem;
+    }
+    .text_head p {
+        font-size: 18px;
+    }
+}
+@media screen and (max-width: 1780px) {
+    .text_head {
+        margin-top: -5vh;
+    }
+    .text_head h1 {
+        font-size: 10rem;
+    }
+    .text_head h2 {
+        font-size: 5rem;
+    }
+}
+@media screen and (max-width: 1508px) {
+    .content-about {
+        padding: 5vw 10%;
+    }
+    .st {
+        font-size: 6rem;
+    }
+    .content-about h2 {
+        font-size: 3rem;
+    }
+    .content-about p {
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 1350px) {
+    .text_head h1 {
+        font-size: 8rem;
+    }
+    .text_head h2 {
+        font-size: 4rem;
+    }
+    .text_head p {
+        font-size: 16px;
+    }
+    .text_head {
+        height: 50vh;
+    }
+}
+@media screen and (max-width: 1160px) {
+    .content-about p {
+        padding-right: 0;
+    }
+    .st {
+        font-size: 5rem;
+    }
+    .content-about .img-show {
+        display: none;
+    }
+    .img-hidden {
+        display: block;
+        margin-left: 35%;
+    }
+    .img-hidden img {
+        width: 40%;
+    }
+    header {
+        width: 80%;
+        height: 70px;
+    }
+    .re-home a box-icon {
+        padding: 5px;
+    }
+}
+@media screen and (max-width: 900px) {
+    .text_head h1, h2 {
+        margin-bottom: 20px;
+    }
+    .text_head h1 {
+        font-size: 90px;
+    }
+    .text_head h2 {
+        font-size: 50px;
+    }
+    .text_head p {
+        font-size: 16px;
+        width: 50%;
+    }
+    .obj-cc {
+        width: 400px;
+        height: 400px;
+    }
+    .content-head {
+        margin-top: 30vh;
+    }
+}
+@media screen and (max-width: 800px) {
+    .st {
+        font-size: 3rem;
+    }
+    .container-about {
+        padding-top: 0;
+    }
+}
+@media screen and (max-width: 590px) {
+    .text_head h1 {
+        font-size: 65px;
+    }
+    .text_head h2 {
+        font-size: 35px;
+    }
+    .content-head hr{
+        margin: 0 5vh;
+        margin-top: 10vh;
+    }
+
+    .st {
+        line-height: 5vh;
+        margin-top: 10vh;
+    }
+    .content-about h2 {
+        font-size: 2rem;
+    }
+    .content-about p span {
+        font-size: 1.5rem;
+    }
+    .obj-cc {
+        width: 300px;
+        height: 300px;
+        filter: blur(90px);
+    }
+}
+@media screen and (max-width: 480px) {
+    .text_head h1 {
+        font-size: 50px;
+    }
+    .text_head h2 {
+        font-size: 30px;
+    }
+    .text_head p {
+        font-size: 14px;
+        font-weight: 300;
+        width: 80%;
+    }
+
+    .content-head hr {
+        margin: 0 6vh;
+        margin-top: 14vh;
+    }
+    .content-about p {
+        font-weight: 300;
+        line-height: 25px;
+    }
+    .content-about button {
+        border-radius: 15px;
+        border-width: 1px;
+        font-weight: 300;
+    }
+}
+@media screen and (max-width: 390px) {
+    nav {
+        width: 250px;
+    }
+    .obj-cc {
+        width: 200px;
+        height: 200px;
+        filter: blur(70px);
+        top: 40vh;
+    }
+}
+@media screen and (max-width: 380px) {
+    .circle {
+        width: 50px;
+        height: 50px;
+    }
+    .text_head button {
+        padding: 15px 23px;
+        font-size: 16px;
+        border-width: 1px;
+    }
+    .text_head p {
+        font-size: 12px;
+        width: 80%;
+    }
+}
+@media screen and (max-width: 320px) {
+    .text_head h1 {
+        font-size: 35px;
+    }
+    .text_head h2 {
+        font-size: 25px;
+    }
+    .text_head p {
+        font-size: 10px;
+        width: 80%;
+    }
+    .obj-cc {
+        width: 150px;
+        height: 150px;
+        filter: blur(50px);
+    }
+}
+
+/* -----------------------------Pages : Manage --------------------------------------- */

@@ -1,0 +1,80 @@
+@media screen and (max-width: 1200px) {
+    .container {
+        width: 100%;
+    }
+    .content-regis {
+        padding: 6vh 10vh;
+        width: 80%;
+    }
+}
+@media screen and (max-width: 680px) {
+    h2 {
+        font-size: 2rem;
+    }
+    .content-regis {
+        padding: 6vh 10vh;
+        width: 80%;
+    }
+    .content-login {
+        width: 80%;
+        padding: 5vh;
+    }
+    .input-box input {
+        font-size: 16px;
+      }
+      .button-23 {
+        font-size: 20px;
+        font-weight: 500;
+        border-width: 1px;
+        margin: 2vh 0;
+      }
+      .register-link {
+        font-size: 16px;
+    }
+}
+@media screen and (max-width: 565px) {
+    .content-regis {
+        padding: 10vw;
+    }
+}
+@media screen and (max-width: 459px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+    .input-box {
+        height: 35px;
+        margin: 25px 0;
+    }
+    .input-box input {
+        font-size: 14px;
+        padding: 1px 45px 1px 20px;
+    }
+    .input-box input::placeholder {
+        color: #ffffff84;
+        font-size: 13px;
+    }
+    .button-23 {
+        font-size: 16px;
+        font-weight: 400;
+        padding: 10px 20px;
+        margin: 20px;
+    }
+    .register-link {
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 390px) {
+    .content-regis {
+        border-radius: 45px;
+    }
+}
+@media screen and (max-height: 600px) {
+    .container {
+        margin-top: 2vh;
+    }
+}
+@media screen and (max-height: 820px) {
+    .container {
+        margin-top: 4vh;
+    }
+}
