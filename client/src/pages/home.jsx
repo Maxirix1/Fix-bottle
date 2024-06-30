@@ -17,7 +17,7 @@ function Home() {
         Swal.fire({
           title: "Loading...",
           html: "",
-          timer: 2000,
+          timer: 1000,
           timerProgressBar: false,
           didOpen: () => {
             Swal.showLoading();
@@ -88,7 +88,7 @@ function Home() {
                     <ul>
                         <li><a href="#">home</a></li>
                         <li><a href="#about">about</a></li>
-                        <li><a href="#">manage</a></li>
+                        <li><Link onClick={handleClick}>Manage</Link></li>
                         <li><a href="#">manual</a></li>
                         <li><Link className="active" onClick={handleClick}>login</Link></li>
                         {/* <li><Link to="/login" className="active" onClick={handleClick}>login</Link></li> */}

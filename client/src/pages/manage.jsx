@@ -16,10 +16,10 @@ function Manage() {
         const checkAuth = async () => {
             const token = localStorage.getItem('token');
             if (!token) {
-                navigate('/'); // Redirect to home if no token is found
+                navigate('/'); 
             } else {
                 try {
-                    // Optionally you can verify the token with the server
+
                     const response = await axios.get(`http://localhost:3001/user/${userID}`, {
                         headers: {
                             Authorization: `Bearer ${token}`
@@ -28,7 +28,6 @@ function Manage() {
                     setUserData(response.data);
                 } catch (error) {
                     console.error('Error fetching user data:', error);
-                    navigate('/'); // Redirect to home if any error occurs
                 }
             }
         };
@@ -59,6 +58,9 @@ function Manage() {
                 }
                 if (value % 10 !== 0) {
                     return 'จำนวนคะแนนที่แลกต้องเป็นจำนวนเต็มของ 10';
+                }
+                if (value < 0) {
+                    return 'ไม่สามารถแลกคะแนนได้';
                 }
             }
         });
@@ -95,11 +97,40 @@ function Manage() {
     };
 
     const handleClick = () => {
+        localStorage.removeItem('token');
+        navigate('/');
         let timerInterval;
         Swal.fire({
             title: "Loading...",
             html: "",
-            timer: 2000,
+            timer: 1200,
+            timerProgressBar: false,
+            didOpen: () => {
+                Swal.showLoading();
+                const timer = Swal.getPopup().querySelector("b");
+                timerInterval = setInterval(() => {
+                    timer.textContent = `${Swal.getTimerLeft()}`;
+                }, 20);
+            },
+            willClose: () => {
+                clearInterval(timerInterval);
+            }
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log("I was closed by the timer");
+                navigate('/'); // Redirect to home after popup closes
+            }
+        });
+    };
+
+    const navClick = () => {
+        localStorage.removeItem('token');
+        navigate('/');
+        let timerInterval;
+        Swal.fire({
+            title: "Loading...",
+            html: "",
+            timer: 1000,
             timerProgressBar: false,
             didOpen: () => {
                 Swal.showLoading();
@@ -136,7 +167,7 @@ function Manage() {
                         <img src={Logo} alt="" />
                     </div>
                     <ul>
-                        <li><a href="#">home</a></li>
+                        <li><Link to="/" onClick={navClick} >home</Link></li>
                         <li><a href="#about">about</a></li>
                         <li><Link to="/manage">manage</Link></li>
                         <li><a href="#">manual</a></li>
@@ -153,7 +184,7 @@ function Manage() {
             </header>
             <div className="dataMain">
                 <p><strong>ชื่อ-สกุล : </strong>{userData.name}</p>
-                <p><strong>เลขประจำตัว : </strong>{userData.ID}</p>
+                <p><strong>เลขประจำตัว : </strong>{userData.student_no}</p>
             </div>
 
             <div className="content-main">
@@ -174,6 +205,7 @@ function Manage() {
 
                     <div className="condition">
                         <p><span>*</span>คะแนนที่แสดง ณ ที่นี้จะไม่ได้แสดงคะแนนที่รวมกับระบบโรงเรียน</p>
+                        <p><span>*</span>อัตราการแลก 10 คะแนนหลัก = 1 คะแนนความดี</p>
                     </div>
                 </div>
             </div>

@@ -76,11 +76,11 @@
 
   .dataMain {
     display: flex;
-    background: #0f496270;
+    background: #35ffe42f;
     padding: 30px;
     margin: 0 10vw;
     margin-top: 2vh;
-    border-radius: 30px;
+    border-radius: 20px;
   }
   .dataMain p {
     font-size: 1.5rem;
@@ -96,7 +96,7 @@
     margin: 2vh 10vw;
     padding: 1vw 6vw;
     background: #0689b1;
-    border-radius: 30px;
+    border-radius: 20px;
   }
   .totalPoint > p{
     font-size: 6rem;
@@ -159,7 +159,7 @@
     background: transparent;
     cursor: pointer;
     transition: ease-out 0.1s;
-    border-radius: 30px;
+    border-radius: 15px;
   }
   .button-1 span, .button-2 span {
     font-size: 2rem;

@@ -7,13 +7,13 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 function Login() {
-    const [ID, setID] = useState('');
+    const [idNo, setIdNo] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
     const handleClick = () => {
-                let timerInterval;
+        let timerInterval;
         Swal.fire({
             title: "Loading...",
             html: "",
@@ -40,17 +40,27 @@ function Login() {
         e.preventDefault();
         
         try {
-            const response = await axios.post('http://localhost:3001/login', { ID, password });
+            const response = await axios.post('http://localhost:3001/login', { idNo, password });
             console.log(response.data);
             localStorage.setItem('token', response.data.token); // Save the token to localStorage
-            navigate('/manage', { state: { userID: response.data.student.ID } });
+            navigate('/manage', { state: { userID: response.data.student.student_no } });
             setErrorMessage(''); // Clear error message on successful submission
         } catch (err) {
             console.error(err.response.data);
             if (err.response && err.response.status === 400) {
                 setErrorMessage(err.response.data.message);
+                Swal.fire({
+                    icon: "error",
+                    title: "ข้อมูลไม่ถูกต้อง",
+                    text: "โปรดลองใหม่"
+                  });
             } else {
                 setErrorMessage('Login failed');
+                Swal.fire({
+                    icon: "error",
+                    title: "มีบางอย่างผิดพลาด",
+                    text: "โปรดลองใหม่"
+                  });
             }
         }
     }
@@ -62,11 +72,11 @@ function Login() {
                 <form onSubmit={handleSubmit}>
                     <div className="input-box">
                         <input 
-                            type="number" 
+                            type="text" 
                             placeholder="Student ID" 
                             required 
-                            value={ID}
-                            onChange={(e) => setID(e.target.value)} 
+                            value={idNo}
+                            onChange={(e) => setIdNo(e.target.value)} 
                         />
                     </div>
 

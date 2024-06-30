@@ -6,8 +6,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function Signup() {
-    const [name, setName] = useState('');
-    const [ID, setID] = useState('');
+    const [idNo, setIdNo] = useState('');
+    const [idCard, setIdCard] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -15,13 +15,13 @@ function Signup() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+    
         if (password !== confirmPassword) {
             setErrorMessage('Passwords do not match :<');
             return;
         }
-
-        axios.post('http://localhost:3001/signup', { name, ID, password })
+    
+        axios.post('http://localhost:3001/signup', { student: { idNo, idCard, password } })
             .then(result => {
                 console.log(result);
                 navigate('/login');
@@ -36,6 +36,7 @@ function Signup() {
                 }
             });
     };
+    
 
     return (
         <div className="container">
@@ -43,30 +44,29 @@ function Signup() {
                 <h2>Create Account</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="input-box">
-                        <input type="text" placeholder="ชื่อ-นามสกุล (ไทย)" required 
-                        onChange={(e) => setName(e.target.value)} />
+                        <input type="text" value={idNo} placeholder="เลขประจำตัวนักเรียน" required onChange={(e) => setIdNo(e.target.value)} />
                     </div>
 
                     <div className="input-box">
-                        <input type="number" placeholder="Student ID" required 
-                        onChange={(e) => setID(e.target.value)} />
+                        <input type="text" value={idCard} placeholder="เลขบัตรประชาชน" required onChange={(e) => setIdCard(e.target.value)} />
                     </div>
 
                     <div className="input-box">
-                        <input type="password" placeholder="ตั้งรหัสผ่าน (6 ตัว)" maxLength="6" required 
-                        onChange={(e) => setPassword(e.target.value)} />
+                        <input type="password" value={password} placeholder="ตั้งรหัสผ่าน (6 ตัว)" maxLength="6" required onChange={(e) => setPassword(e.target.value)} />
                     </div>
 
                     <div className="input-box">
-                        <input type="password" placeholder="ยืนยันรหัสผ่าน (6 ตัว)" maxLength="6" required 
-                        onChange={(e) => setConfirmPassword(e.target.value)} />
+                        <input type="password" value={confirmPassword} placeholder="ยืนยันรหัสผ่าน (6 ตัว)" maxLength="6" required onChange={(e) => setConfirmPassword(e.target.value)} />
                     </div>
 
                     {errorMessage && <p className="error-message">{errorMessage}</p>}
 
                     <button className="button-23" role="button" type="submit">SIGNUP</button>
+
                     <div className="register-link">
+
                         <p>มีบัญชีแล้วใช่ไหม?<Link to="/login"> เข้าสู่ระบบ</Link></p>
+
                         <Link to="/" className='link-home'>
                             <box-icon name='arrow-back' flip='vertical' color='#ffffff' size="lg"></box-icon>
                         </Link>
@@ -78,4 +78,3 @@ function Signup() {
 }
 
 export default Signup;
-``
