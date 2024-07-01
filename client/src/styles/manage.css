@@ -76,7 +76,8 @@
 
   .dataMain {
     display: flex;
-    background: #35ffe42f;
+    background: #ffffff15;
+    backdrop-filter: blur(40px);
     padding: 30px;
     margin: 0 10vw;
     margin-top: 2vh;
@@ -352,13 +353,20 @@
   .pointMain strong {
     font-size: 14px;
   }
+  .dataMain p{
+    font-size: 14px;
+  }
   .pointMain p {
     font-size: 14px;
+  }
+  .condition p {
+    font-size: 10px;
+    font-weight: 200;
   }
 }
 @media screen and (max-width: 565px) {
   .dataMain p {
-    font-size: 16px;
+    font-size: 14px;
   }
   .buttonExchange button h1{
     font-size: 22px;
@@ -372,7 +380,7 @@
 }
 @media screen and (max-width: 485px) {
   .dataMain p {
-    font-size: 14px;
+    font-size: 12px;
   }
   .totalPoint > p {
     font-size: 40px;
@@ -390,7 +398,7 @@
 }
 @media screen and (max-width: 445px) {
   .dataMain p {
-    font-size: 14px;
+    font-size: 12px;
     margin: 0 10px;
   }
   .totalPoint > p {

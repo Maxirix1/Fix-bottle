@@ -4,7 +4,7 @@ const cors = require("cors");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const StudentModel = require('./models/Student');
-const existingStudents = require('./M6.json'); // Import existing student data
+const existingStudents = require('./DataStudent.json'); // Import existing student data
 
 const app = express();
 const secretKey = '@fteracdes921115!!!@@@';
@@ -183,5 +183,6 @@ app.post('/user/exchange/:id', verifyToken, async (req, res) => {
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
-    console.log(existingStudents[119].student.name);
+    console.log(existingStudents[2266].student.name);
+    console.log(existingStudents[2266].student.classroom_name);
 });
