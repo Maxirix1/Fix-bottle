@@ -44,11 +44,11 @@ function Signup() {
                 <h2>Create Account</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="input-box">
-                        <input type="text" value={idNo} placeholder="เลขประจำตัวนักเรียน" required onChange={(e) => setIdNo(e.target.value)} />
+                        <input type="number" value={idNo} placeholder="เลขประจำตัวนักเรียน" maxLength="5" required onChange={(e) => setIdNo(e.target.value)} />
                     </div>
 
                     <div className="input-box">
-                        <input type="text" value={idCard} placeholder="เลขบัตรประชาชน" required onChange={(e) => setIdCard(e.target.value)} />
+                        <input type="number" value={idCard} placeholder="เลขบัตรประชาชน" maxLength="13" required onChange={(e) => setIdCard(e.target.value)} />
                     </div>
 
                     <div className="input-box">

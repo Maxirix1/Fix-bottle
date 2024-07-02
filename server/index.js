@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const cors = require("cors");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const StudentModel = require('./models/Student');
-const existingStudents = require('./Data/DataStudent.json'); // Import existing student data
+const UserModel = require('./models/users.js');
+const StudentModel = require('./models/students.js'); // Import Student Model
 
 const app = express();
 const secretKey = '@fteracdes921115!!!@@@';
@@ -12,66 +12,60 @@ const secretKey = '@fteracdes921115!!!@@@';
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb://127.0.0.1:27017/Student", {
+mongoose.connect("mongodb://admin:gETLVaKf991T2P0480xy1wUWSDq9Dp@110.78.215.106:27017/suthi-vending-machine?authSource=admin", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
 
 // ------------------⬇️------------signup-----------------⬇️-------------
-
 app.post('/signup', async (req, res) => {
     const { idNo, idCard, password } = req.body.student;
 
-    // ตรวจสอบว่า idNo และ idCard ไม่เป็น null หรือ undefined
     if (!idNo || !idCard) {
         return res.status(400).json({ message: 'ID และเลขบัตรประชาชนเป็นสิ่งที่ต้องกรอก' });
     }
 
     try {
-        const studentData = existingStudents.find(student => student.student.student_no === idNo);
+        const studentData = await StudentModel.findOne({ 'student.student_no': idNo });
 
         if (!studentData) {
             return res.status(400).json({ message: 'ไม่พบข้อมูลนักเรียนในระบบ' });
         }
 
-        const matchedStudent = existingStudents.find(student => {
-            return student.student.student_no === idNo && student.student.id_card === idCard;
-        });
-
-        if (!matchedStudent) {
+        if (studentData.student.id_card !== idCard) {
             return res.status(400).json({ message: 'ID และเลขบัตรประชาชนไม่ตรงกัน' });
         }
 
-        const { name } = studentData.student;
+        const email = `${idNo}@suthi.ac.th`;
 
-        const existingStudent = await StudentModel.findOne({ student_no: idNo });
+        const existingUser = await UserModel.findOne({ email });
 
-        if (existingStudent) {
+        if (existingUser) {
             return res.status(400).json({ message: 'Student ID นี้ถูกใช้แล้ว' });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const newStudent = new StudentModel({
-            student_no: idNo,
-            id_card: idCard,
-            name: name,
+        const newUser = new UserModel({
+            username: studentData.student.name,
+            student_no: studentData.student.student_no,
+            email: email,
             password: hashedPassword,
-            totalPoint: 0,
+            role: "student",
+            volunteer: 0,
             behavior: 0,
-            volunteer: 0
+            point: 0,
+            excHistory: [],
         });
 
-        await newStudent.save();
-        res.json(newStudent);
+        await newUser.save();
+        res.json(newUser);
 
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'เกิดข้อผิดพลาด' });
     }
 });
-
-
 
 
 // -----------------⬇️----------login----------⬇️------------------
@@ -128,7 +122,7 @@ app.get('/user/:id', verifyToken, async (req, res) => {
     const { id } = req.params;
 
     try {
-        const student = await StudentModel.findOne({ student_no: id });
+        const student = await StudentModel.findOne({ 'student.student_no': id });
 
         if (!student) {
             return res.status(404).json({ message: 'ไม่พบข้อมูลผู้ใช้' });
@@ -142,7 +136,6 @@ app.get('/user/:id', verifyToken, async (req, res) => {
     }
 });
 
-
 // ---------------------⬇️------------การแลกเปลี่ยนคะแนน----------⬇️--------------------
 
 app.post('/user/exchange/:id', verifyToken, async (req, res) => {
@@ -150,7 +143,7 @@ app.post('/user/exchange/:id', verifyToken, async (req, res) => {
     const { points, pointType } = req.body;
 
     try {
-        const student = await StudentModel.findOne({ student_no: id });
+        const student = await StudentModel.findOne({ 'student.student_no': id });
 
         if (!student) {
             return res.status(404).json({ message: 'ไม่พบข้อมูลผู้ใช้' });
@@ -176,13 +169,9 @@ app.post('/user/exchange/:id', verifyToken, async (req, res) => {
     }
 });
 
-
-
 // ----------------⬇️----------------port: 3001-----⬇️---------------
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
-    console.log(existingStudents[2266].student.name);
-    console.log(existingStudents[2266].student.classroom_name);
 });

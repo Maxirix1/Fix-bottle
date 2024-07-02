@@ -8,6 +8,11 @@ const userSchema = new mongoose.Schema({
         required: [true, "Please provide a username"],
         unique: true,
     },
+    student_no: {
+        type: Number,
+        require: [true, "Please provide a Student ID"],
+        unique: true,
+    },
     email: {
         type: String,
         required: [true, "Please provide an email"],
@@ -48,7 +53,7 @@ const userSchema = new mongoose.Schema({
     },
 });
 
-// Hash the password before saving
+
 userSchema.pre("save", async function (next) {
     if (!this.isModified("password")) {
         next();
@@ -58,9 +63,9 @@ userSchema.pre("save", async function (next) {
     next();
 });
 
-// Compare the password
+
 userSchema.methods.comparePassword = async function (password) {
     return await bcrypt.compare(password, this.password);
 };
 
-module.exports = mongoose.model("users", userSchema);
+module.exports = mongoose.model("users", userSchema, "dbUser");
