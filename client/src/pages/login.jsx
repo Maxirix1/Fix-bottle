@@ -85,7 +85,7 @@ function Login() {
                             type="password" 
                             placeholder="รหัสผ่าน (6 ตัว)" 
                             maxLength="6" 
-                            required 
+                            required
                             value={password}
                             onChange={(e) => setPassword(e.target.value)} 
                         />

@@ -65,6 +65,12 @@
     header {
         width: 70%;
     }
+    .text_head h1 {
+        font-size: 140px;
+    }
+    .text_head h2 {
+        font-size: 70px;
+    }
     .container-about {
         padding: 8vw 15vw;
     }
@@ -112,10 +118,10 @@
         margin-top: -5vh;
     }
     .text_head h1 {
-        font-size: 10rem;
+        font-size: 8rem;
     }
     .text_head h2 {
-        font-size: 5rem;
+        font-size: 3rem;
     }
 }
 @media screen and (max-width: 1508px) {
@@ -134,10 +140,10 @@
 }
 @media screen and (max-width: 1350px) {
     .text_head h1 {
-        font-size: 8rem;
+        font-size: 6rem;
     }
     .text_head h2 {
-        font-size: 4rem;
+        font-size: 3rem;
     }
     .text_head p {
         font-size: 16px;
@@ -300,4 +306,10 @@
     }
 }
 
+
+@media screen and (max-height: 910px) {
+    .text_head {
+        margin-top: -10vh;
+    }
+}
 /* -----------------------------Pages : Manage --------------------------------------- */

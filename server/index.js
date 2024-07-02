@@ -4,7 +4,7 @@ const cors = require("cors");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const StudentModel = require('./models/Student');
-const existingStudents = require('./DataStudent.json'); // Import existing student data
+const existingStudents = require('./Data/DataStudent.json'); // Import existing student data
 
 const app = express();
 const secretKey = '@fteracdes921115!!!@@@';

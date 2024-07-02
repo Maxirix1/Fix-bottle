@@ -13,7 +13,7 @@ main {
   height: 200vh;
 }
 img {
-  width: 37%;
+  width: 30%;
 }
 
 .re-home {
@@ -30,13 +30,14 @@ img {
 
 header {
   width: 60%;
-  height: 80px;
-  background-color: #6b6b6b34;
+  height: 65px;
+  background-color: #3b3b3b50;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 40px;
   border-radius: 25px;
+  backdrop-filter: blur(20px);
   margin: 0 auto;
   margin-top: 2vh;
 }
@@ -57,7 +58,7 @@ nav ul li a{
   color: #ffffff;
   display: block;
   margin: 0 2px;
-  font-weight: 600;
+  font-weight: 300;
   padding: 8px 18px;
   transition: 0.5s;
   border-radius: 12px;
