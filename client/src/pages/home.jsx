@@ -33,7 +33,7 @@ function Home() {
 
           if (result.dismiss === Swal.DismissReason.timer) {
             console.log("I was closed by the timer");
-            navigate('login'); // พาผู้ใช้ไปยังเส้นทางที่กำหนดหลังจาก popup ปิด
+            navigate('login'); 
           }
 
         });
@@ -62,7 +62,7 @@ function Home() {
 
           if (result.dismiss === Swal.DismissReason.timer) {
             console.log("I was closed by the timer");
-            navigate('signup'); // พาผู้ใช้ไปยังเส้นทางที่กำหนดหลังจาก popup ปิด
+            navigate('signup'); 
           }
 
         });
