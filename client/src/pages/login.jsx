@@ -42,9 +42,9 @@ function Login() {
         try {
             const response = await axios.post('http://localhost:3001/login', { idNo, password });
             console.log(response.data);
-            localStorage.setItem('token', response.data.token); // Save the token to localStorage
+            localStorage.setItem('token', response.data.token); 
             navigate('/manage', { state: { userID: response.data.student.student_no } });
-            setErrorMessage(''); // Clear error message on successful submission
+            setErrorMessage(''); 
         } catch (err) {
             console.error(err.response.data);
             if (err.response && err.response.status === 400) {
