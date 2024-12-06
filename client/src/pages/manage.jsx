@@ -44,7 +44,7 @@ function Manage() {
             inputAttributes: {
                 min: 0,
                 max: userData.totalPoint,
-                step: 10 // Step 10 for multiples of 10
+                step: 10
             },
             showCancelButton: true,
             cancelButtonText: 'ยกเลิก',
@@ -77,7 +77,6 @@ function Manage() {
                     }   
                 });
 
-                // Update user data after successful exchange
                 setUserData(response.data.updatedUser);
                 Swal.fire({
                     icon: 'success',
@@ -118,7 +117,7 @@ function Manage() {
         }).then((result) => {
             if (result.dismiss === Swal.DismissReason.timer) {
                 console.log("I was closed by the timer");
-                navigate('/'); // Redirect to home after popup closes
+                navigate('/');
             }
         });
     };
@@ -145,7 +144,7 @@ function Manage() {
         }).then((result) => {
             if (result.dismiss === Swal.DismissReason.timer) {
                 console.log("I was closed by the timer");
-                navigate('/'); // Redirect to home after popup closes
+                navigate('/');
             }
         });
     };
