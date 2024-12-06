@@ -25,7 +25,7 @@ function Signup() {
             .then(result => {
                 console.log(result);
                 navigate('/login');
-                setErrorMessage(''); // Clear error message on successful submission
+                setErrorMessage('');
             })
             .catch(err => {
                 console.error(err.response.data);
